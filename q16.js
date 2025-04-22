@@ -21,6 +21,13 @@ db.employees.aggregate([
             _id: 0,
             name:1,
             salary:1, 
+            grade:{
+                //cond:[condition, if-true, if-false]
+                $cond:[{
+                    $gte:["$salary", 1500]}, 
+                    "Grade A", 
+                    "Grade B"],
+            },
         },
     },
 ]);
